@@ -1,0 +1,21 @@
+{
+  "mcpServers": {
+    "echo-server": {
+      "name": "Echo Test Server",
+      "description": "Simple echo server for testing",
+      "command": "python",
+      "args": ["-c", "import sys, json; print(json.dumps({'tools': [{'name': 'echo', 'description': 'Echo test'}]}))"],
+      "disabled": true
+    },
+         "my-memory": {
+       "command": "node",
+       "args": [
+         "/Users/jungchihoon/hades/ktmonitoring/my-memory-mcp/dist/index.js"
+       ],
+       "env": {
+         "DATABASE_PATH": "/Users/jungchihoon/hades/ktmonitoring/my-memory-mcp/data/my-memory.sqlite"
+       },
+       "disabled": true
+      }
+  }
+} 

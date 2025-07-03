@@ -6,7 +6,7 @@
       "headers": {
         "Authorization": "Bearer test-token"
       },
-      "disabled": false
+      "disabled": true
     }
   }
 }

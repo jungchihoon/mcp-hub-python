@@ -1,0 +1,101 @@
+{
+  "mcpServers": {
+    "filesystem": {
+      "name": "File System Server",
+      "description": "Local file system access with read/write capabilities",
+      "command": "python",
+      "args": ["-m", "mcp.server.filesystem", "/tmp"],
+      "env": {
+        "PYTHONPATH": "/path/to/mcp"
+      }
+    },
+    
+    "git-server": {
+      "name": "Git Repository Server", 
+      "description": "Git repository management and operations",
+      "command": "python",
+      "args": ["-m", "mcp.server.git", "--repository", "/path/to/repo"],
+      "env": {
+        "GIT_AUTHOR_NAME": "${GIT_AUTHOR_NAME}",
+        "GIT_AUTHOR_EMAIL": "${GIT_AUTHOR_EMAIL}"
+      }
+    },
+    
+    "weather-api": {
+      "name": "Weather API Server",
+      "description": "Weather information via external API",
+      "url": "https://weather-mcp.example.com/sse",
+      "headers": {
+        "Authorization": "Bearer ${WEATHER_API_KEY}",
+        "X-App-Name": "MCP-Hub-Python"
+      }
+    },
+    
+    "database-server": {
+      "name": "Database Query Server",
+      "description": "SQL database query interface",
+      "command": "python",
+      "args": ["-m", "mcp.server.database"],
+      "env": {
+        "DATABASE_URL": "${DATABASE_URL}",
+        "DB_POOL_SIZE": "10"
+      }
+    },
+    
+    "dev-example": {
+      "name": "Development Example Server",
+      "description": "Example server with file watching enabled",
+      "command": "python",
+      "args": ["-m", "my_dev_server"],
+      "env": {
+        "DEBUG": "true",
+        "LOG_LEVEL": "DEBUG"
+      },
+      "dev": {
+        "enabled": true,
+        "watch": ["src/**/*.py", "config/**/*.json"],
+        "restart_delay": 1.5
+      }
+    },
+    
+    "browser-automation": {
+      "name": "Browser Automation Server",
+      "description": "Web browser automation using Playwright",
+      "command": "${cmd: which python}",
+      "args": ["-m", "mcp.server.playwright"],
+      "env": {
+        "PLAYWRIGHT_BROWSERS_PATH": "${HOME}/.cache/ms-playwright",
+        "HEADLESS": "true"
+      }
+    },
+    
+    "llm-tools": {
+      "name": "LLM Tools Server",
+      "description": "Large Language Model integration tools",
+      "url": "https://llm-tools.example.com/mcp",
+      "headers": {
+        "Authorization": "Bearer ${OPENAI_API_KEY}",
+        "X-Model": "gpt-4"
+      }
+    },
+    
+    "security-tools": {
+      "name": "Security Tools Server", 
+      "description": "Security scanning and analysis tools",
+      "command": "python",
+      "args": ["-m", "mcp.server.security"],
+      "env": {
+        "SECURITY_LEVEL": "high",
+        "API_KEY": "${cmd: op read op://Security/api-key/credential}"
+      }
+    },
+    
+    "disabled-example": {
+      "name": "Disabled Server Example",
+      "description": "Example of a disabled server configuration",
+      "command": "python", 
+      "args": ["-m", "example.server"],
+      "disabled": true
+    }
+  }
+} 
