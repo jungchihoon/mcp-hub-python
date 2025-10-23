@@ -44,7 +44,7 @@
   "devDependencies": {
     "@eslint/js": "^9.29.0",
     "@modelcontextprotocol/sdk": "^1.12.1",
-    "@vitest/coverage-v8": "^3.2.1",
+    "@vitest/coverage-v8": "^4.0.1",
     "chokidar": "^4.0.3",
     "esbuild": "^0.25.3",
     "eslint": "^9.29.0",
